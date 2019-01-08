@@ -15,4 +15,15 @@
       (is (hasAllTheSameDigits? wondernum (* 3 wondernum)))
       (is (hasAllTheSameDigits? wondernum (* 4 wondernum)))
       (is (hasAllTheSameDigits? wondernum (* 5 wondernum)))
-      (is (hasAllTheSameDigits? wondernum (* 6 wondernum))))))
+      (is (hasAllTheSameDigits? wondernum (* 6 wondernum)))))
+
+  (testing "A wonderland number must have the following things true about it"
+    (let [wondernum (wonderland-number-2)]
+      (is (= wondernum (->> wondernum
+                            str
+                            vec
+                            (map #(int (Math/pow (int %) 3)))
+                            (reduce +)
+                            )))
+      )
+    ))
